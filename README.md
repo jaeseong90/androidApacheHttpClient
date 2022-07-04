@@ -166,14 +166,14 @@ public HashMap<String,String> requestMultiparmHttpWithUrl(String _file, String _
 ### 해결방안
 - 기존 소스코드가 동작될 수 있도록 부분부분 수정 
 
-####build.gradle
+build.gradle
 ```
 android {
   useLibrary 'org.apache.http.legacy'
 }
 ```
 
-####AndroidManifest.xml
+AndroidManifest.xml
 ```
 
  <application
