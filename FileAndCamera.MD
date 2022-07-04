@@ -25,3 +25,39 @@ Android 7.0을 대상으로 하는 앱의 경우, Android 프레임워크는 앱
 <hr/>
 
 ### 해결 
+
+- 추가
+
+res/xml/value.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="storage/emulated/0" path="." /> //디버깅해보니까 0이 자꾸 달라붙어서 넣어줌
+</paths>
+```
+
+AndroidManifest.xml
+```
+<application>
+...
+ <provider
+            android:authorities="xxx.xxx.xxx" // your domain(package)
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/value"/>
+        </provider>
+...
+</application>
+```        
+
+```java
+  File file = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "적절한key값" + 확장자 );
+ 
+  mImageCaptureUri = Uri.fromFile( file );
+  
+  -> mImageCaptureUri = FileProvider.getUriForFile(this, "xxx.xxx.xxx", file ) ; 
+```
+
