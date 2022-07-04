@@ -164,7 +164,8 @@ public HashMap<String,String> requestMultiparmHttpWithUrl(String _file, String _
 ```
 
 ### 해결방안
-- 기존 소스코드가 동작될 수 있도록 부분부분 수정 
+- 아래 파일 수정 
+- 근본적인 대책이 아니니 다음에 더 수정하도록 합시다.
 
 build.gradle
 ```
